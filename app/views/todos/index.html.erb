@@ -1,0 +1,13 @@
+<h1>To-Do List</h1>
+
+<ul>
+    <% @todos.each do |todo| %>
+    <li>
+        <%= todo.name %>
+        <%= link_to 'Show', :controller => 'todos', :action =>'show', :id => todo %>
+        <%= link_to 'Edit', :controller => 'todos', :action =>'edit', :id => todo %>
+        <%= link_to 'Delete', :controller => 'todos', :action =>'destroy', :id => todo %>
+    </li>
+    <% end %>
+</ul>
+<%= link_to 'Create', :controller => 'todos', :action => 'new' %>
