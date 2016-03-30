@@ -1,0 +1,184 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+@import 'bootstrap';
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab|Ubuntu);
+
+
+// variable
+$task-color: #9addfe;
+$finish-task-color: #beb7f2;
+$class-color: #f3e973;
+$create-color: #c9f285;
+$setting-color: #e7be76;
+$form-color: #fbfbfb;
+$high-priority-color:#de4b4b;
+$normal-priority-color:#ebac15;
+$low-priority-color:#9ace43;
+
+//mixins
+@mixin set_border($color:#FFF) {
+    border: darken($color, 10%) 1px solid;
+}
+@mixin shadow{
+     box-shadow: 2px 2px 12px 4px rgba(0,0,0,0.25);
+}
+
+
+//application
+h1,h2,h3,h4,h5,h6,p,a,input{
+    font-family: 'Ubuntu', sans-serif;
+}
+.float-right{
+    float: right;
+}
+.jumbotron{
+    background-image:  image-url("header.jpg");
+    background-size: cover;
+    height: 450px;
+    padding-top: 100px;
+    font-family: 'Roboto Slab', serif;
+    color: white;
+    h1{
+        
+        font-size: 100px;  
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+}
+
+
+//index
+.left-menu, .main{
+    padding: 0 5%;
+}
+.panel{
+    border-radius: 0;
+    @include shadow; 
+    background-color: $task-color;
+    @include set_border($task-color); 
+}
+.form-panel{
+    background-color: $form-color;
+    @include set_border($form-color); 
+}
+.finish-panel{
+     background-color: $finish-task-color;
+    @include set_border($finish-task-color); 
+    
+    .page-header{
+        border-color:  darken($finish-task-color, 10%);
+    }
+    .panel-body + .table{
+        border-color: darken($finish-task-color, 10%);
+        thead > tr > th, thead > tr > td, tbody > tr > th, tbody > tr > td, tfoot > tr > th, tfoot > tr > td, {
+            border-color: darken($finish-task-color, 10%);
+        }
+
+    }
+}
+.cat-panel{
+    background-color: $class-color;
+    @include set_border($class-color); 
+}
+.btn, .btn-group-vertical > .btn:first-child:not(:last-child),.btn-group-vertical > .btn:last-child:not(:first-child){
+    border-radius: 0;
+    
+}
+.choose{
+    width: 100%;
+    @include shadow;
+    .btn{
+        background-color: $class-color;
+        @include set_border($class-color); 
+    }
+    .btn:hover{
+        background-color: darken($class-color, 5%);
+        }
+       
+}
+.create-btn{
+
+    background-color: $create-color;
+    @include set_border($create-color); 
+}
+.create-btn:hover{
+    background-color: darken($create-color, 5%);
+    @include set_border($create-color);
+}
+.setting-btn{
+
+    background-color: $setting-color;
+    @include set_border($setting-color); 
+}
+.setting-btn:hover{
+    background-color: darken($setting-color, 5%);
+    @include set_border($setting-color);
+}
+.shadow{
+ @include shadow;
+}
+.task-btn{
+        background-color: lighten($task-color, 10%);
+        @include set_border(lighten($task-color, 10%)); 
+}
+.task-btn:hover{
+        background-color:  darken(lighten($task-color, 10%), 5%);
+        @include set_border(lighten($task-color, 10%)); 
+}
+.finish-task-btn{
+        background-color: lighten($finish-task-color, 10%);
+        @include set_border(lighten($finish-task-color, 10%)); 
+}
+.finish-task-btn:hover{
+        background-color:  darken(lighten($finish-task-color, 10%), 5%);
+        @include set_border(lighten($finish-task-color, 10%)); 
+}
+.cat-btn{
+
+    background-color: lighten($class-color, 10%);
+    @include set_border(lighten($class-color, 10%)); 
+}
+.cat-btn:hover{
+    background-color: darken(lighten($class-color, 10%), 5%);
+    @include set_border(lighten($class-color, 10%));
+}
+
+.pagination{
+    span{
+        font-size: 20px;
+    }
+}
+.class-label{
+    background-color: darken($class-color,20%);
+}
+.high-priority-label{
+    background-color: $high-priority-color;
+}
+.normal-priority-label{
+    background-color: $normal-priority-color;
+}
+.low-priority-label{
+    background-color: $low-priority-color;
+}
+
+//form
+.form-control{
+    margin-bottom: 20px;
+}

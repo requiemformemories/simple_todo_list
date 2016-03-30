@@ -7,9 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p style="color: green"><%= flash[:notice] %></p>
-<p style="color: red"><%= flash[:alert] %></p>
-<%= yield %>
 
+<div class="">
+  <div class="jumbotron">
+    <h1>To-do List</h1>
+    <p>A simple to-do list that makes our life  better, maybe.</p>
+  </div>
+  <% if flash[:notice]%>
+  <div class="col-md-8 col-md-offset-2 alert alert-success" role="alert"><%= flash[:notice] %></div>
+  <% end %>
+  <% if flash[:alert] %>
+  <div class="col-md-8 col-md-offset-2 alert alert-danger" role="alert"><%= flash[:alert] %></div>
+  <% end %>
+  <%= yield %>
+</div>
 </body>
 </html>

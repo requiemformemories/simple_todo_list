@@ -1,8 +1,0 @@
-<h1>Edit a to-do</h1>
-
-<%= form_for @todo, :url => {:controller => 'todos', :action => 'update', :id => @todo} do |f| %>
-<%= render :partial => 'form', :locals => {:f => f} %>
-
-<%= f.submit 'Update'%>
-
-<% end %>

@@ -1,0 +1,38 @@
+ <% if @task.is_finished == TRUE %>
+    <div class="col-md-6 col-md-offset-3 panel finish-panel">
+<% else %>
+    <div class="col-md-6 col-md-offset-3 panel panel">
+<% end %>
+    
+    
+    <div class="panel-body">
+        <% t = @Page_title %>
+        <%= render :partial => 'title', :locals => {:t => t} %>
+        <p><%= @task.description %></p>
+    </div>
+     <table class="table">
+             <thead>
+                 <th>Property</th>
+                <th>Infomation</th>
+             </thead>
+            <tr>
+                <td>Category</td>
+                <td><%= @task.category.name %></td>
+            </tr>
+            <tr>
+                <td>Priority</td>
+                <td><%= @task.priority.name %></td>
+            </tr>
+              <tr>
+                <td>Finished</td>
+                <td><%= @task.is_finished %></td>
+            </tr>
+        </table>
+            <div class="panel-body">
+         <% if @task.is_finished == TRUE %>
+            <%= link_to 'Back to List', tasks_path, :class => "btn btn-default finish-task-btn" %>
+        <% else %>
+            <%= link_to 'Back to List', tasks_path, :class => "btn btn-default task-btn" %>
+        <% end %>
+    </div>
+</div>

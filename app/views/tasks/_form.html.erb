@@ -1,0 +1,24 @@
+<% if @task.errors.any? %>
+    <% @task.errors.full_messages.each do |msg| %>
+    <div class="alert alert-danger" role="alert">
+        <p><strong>Warning!</strong> <%= msg %></p>
+    </div>
+    <% end %>
+
+<% end %>
+
+<%= f.label :name, 'Name' %>
+<%= f.text_field :name , :class => 'form-control' %>
+
+<%= f.label :description, "Description" %>
+<%= f.text_area :description, :class => 'form-control' %>
+
+<%= f.label :category_id, "Category" %>
+<div class="dropdown">
+<%= f.collection_select(:category_id, Category.all, :id, :name, {}, {:class=>'form-control'}) %>
+</div>
+
+<%= f.label :priority_id, "Priority" %>
+<%= f.collection_select(:priority_id, Priority.all, :id, :name, {}, {:class=>'form-control'}) %>
+
+
