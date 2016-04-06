@@ -35,13 +35,7 @@ ActiveRecord::Schema.define(version: 20160324073358) do
     t.integer  "priority_id"
   end
 
-  create_table "to_do_lists", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.boolean  "is_public"
-    t.integer  "importance"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
+  add_index "tasks", ["category_id"], name: "index_tasks_on_category_id"
+  add_index "tasks", ["priority_id"], name: "index_tasks_on_priority_id"
 
 end
