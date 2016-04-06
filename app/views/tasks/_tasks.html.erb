@@ -1,0 +1,7 @@
+<% if tasks.empty? %>
+    <p><%= "Wonderful! There is no tasks!" %></p>
+<% else %>
+    <% tasks.each do |task| %>
+        <%= render :partial => 'task', :locals => {:task => task} %>
+    <% end %>
+<% end %>

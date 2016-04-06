@@ -1,24 +1,24 @@
-<div class="col-md-3 left-menu">
+<div class="col-md-3 left-menu" >
     <h3>Classification</h3>
     <div class="btn-group-vertical choose" role="group">
-    <%= link_to 'All', tasks_path, :class => 'btn btn-default' %>
-    <%= link_to 'UnFinish', tasks_path(status: 'unfinish'), :class => 'btn btn-default' %>
-    <%= link_to 'Finished', tasks_path(status: 'finished'), :class => 'btn btn-default' %>
+    <%= link_to 'All', tasks_path, :remote => true, :class => 'btn btn-default' %>
+    <%= link_to 'UnFinish', tasks_path(status: 'unfinish'), :remote => true, :class => 'btn btn-default' %>
+    <%= link_to 'Finished', tasks_path(status: 'finished'), :remote => true, :class => 'btn btn-default' %>
     </div>
     <h4>Priority</h4>
     <div class="btn-group-vertical choose" role="group">
-    <%= link_to 'High', tasks_path(status: 'high-priority'), :class => 'btn btn-default' %>
-    <%= link_to 'Normal', tasks_path(status: 'normal-priority'), :class => 'btn btn-default' %>
-    <%= link_to 'Low', tasks_path(status: 'low-priority'), :class => 'btn btn-default' %>
+    <%= link_to 'High', tasks_path(status: 'high-priority'), :remote => true, :class => 'btn btn-default' %>
+    <%= link_to 'Normal', tasks_path(status: 'normal-priority'), :remote => true, :class => 'btn btn-default' %>
+    <%= link_to 'Low', tasks_path(status: 'low-priority'), :remote => true, :class => 'btn btn-default' %>
     </div>
     <h4>Category</h4>
     <div class="btn-group-vertical choose" role="group">
         <% @categories.each do |category| %>
-            <%= link_to category.name, tasks_path(status: category.name), :class => 'btn btn-default' %>
+            <%= link_to category.name, tasks_path(status: category.name), :remote => true, :class => 'btn btn-default' %>
         <% end %>
     </div>
     <h3>Search</h3>
-    <%= form_tag tasks_path, :method => :get do %>
+    <%= form_tag tasks_path, :method => :get, :remote => true do %>
     <div class="input-group">
         <%= text_field_tag "keyword",'Search for...',{:class => "form-control"}%>
         <span class="input-group-btn">
@@ -28,51 +28,20 @@
     <% end %>
     
     <h3>Create</h3>
-    <%= link_to 'Create new task', new_task_path,  :class => 'btn btn-default create-btn shadow' %>
+    <%= link_to 'Create new task', new_task_path, :remote => true,  :class => 'btn btn-default create-btn shadow' %>
     <h3>Settings</h3>
     <%= link_to 'Category Management', categories_path,  :class => 'btn btn-default setting-btn shadow' %>
 </div>
-<div class="col-md-9 main">
-    <%= render :partial => 'title', :locals => {:t => @Page_title} %>
-        <% if @tasks.empty? %>
-            <p><%= "Wonderful! There is no tasks!" %></p>
-        <% else %>
-            <% @tasks.each do |task| %>
-                <% if task.is_finished == TRUE %>
-                <div class="panel finish-panel">
-                <% elsif task.is_finished == FALSE %>
-                <div class="panel">
-                <% end %>
-                    <div class="panel-heading">
-                        
-                        <h3 class="panel-title"><%= task.name %>
-                        <% if task.priority.name == 'high'%>
-                            <span class= 'label high-priority-label'>
-                        <% elsif task.priority.name == 'normal'%>
-                            <span class='label normal-priority-label'>
-                        <% else %>
-                            <span class='label low-priority-label'>
-                        <% end %>
-                        <%= task.priority.name %></span> <span class="label class-label"><%= task.category.name %></span></h3>
-                    </div>
-                    <div class="panel-body">
-                        <% if task.is_finished == TRUE %>
-                            <% c = 'btn btn-default finish-task-btn' %>
-                        <% elsif task.is_finished == FALSE %>
-                            <% c = 'btn btn-default task-btn' %>
-                        <% end %>
-                        <%= link_to 'Show Details', task_path(task), :class => c %>
-                        <%= link_to 'Edit', edit_task_path(task), :class => c %>
-                        <% if task.is_finished == false %>
-                            <%= link_to 'Finish',{:controller => 'tasks', :action => 'finish', :id => task},:class => c %>
-                        <% end %>
-                        <%= link_to 'Delete', task_path(task), :method => :delete, :class => c %>
-                    </div>
-                </div>
-                
-            <% end %>
-        <% end %>
-
-    <%= paginate @tasks %>
-    
+<div class="col-md-9" id="main">
+    <div id="flash"></div>
+    <div id="tasks">
+        <%= render :partial => 'title', :locals => {:t => (@Page_title || 'To-do list')} %>
+        <%= render :partial => 'tasks', :locals => {:tasks => @tasks }%>
+    </div>
+</div>    
+    <div class="modal fade" id="modal">
+		<div class="modal-dialog">
+           
+		</div>
+	</div>
 </div>

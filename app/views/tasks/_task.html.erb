@@ -1,0 +1,33 @@
+<div id="<%= task.id %>">
+<% if task.is_finished == TRUE %>
+<div class="panel finish-panel">
+<% elsif task.is_finished == FALSE %>
+<div class="panel" >
+<% end %>
+
+    <div class="panel-heading">
+        <h3 class="panel-title"><%= task.name %>
+        <% if task.priority.name == 'high'%>
+            <span class= 'label high-priority-label'>
+        <% elsif task.priority.name == 'normal'%>
+            <span class='label normal-priority-label'>
+        <% else %>
+            <span class='label low-priority-label'>
+        <% end %>
+        <%= task.priority.name %></span> <span class="label class-label"><%= task.category.name %></span></h3>
+    </div>
+    <div class="panel-body">
+        <% if task.is_finished == TRUE %>
+            <% c = 'btn btn-default finish-task-btn' %>
+        <% elsif task.is_finished == FALSE %>
+            <% c = 'btn btn-default task-btn' %>
+        <% end %>
+        <%= link_to 'Show Details', task_path(task),:remote => true, :class => c %>
+        <%= link_to 'Edit', edit_task_path(task), :remote => true, :class => c %>
+        <% if task.is_finished == false %>
+            <%= link_to 'Finish',{:controller => 'tasks', :action => 'finish', :remote => true, :id => task},:class => c %>
+        <% end %>
+        <%= link_to 'Delete', task_path(task), :method => :delete, :remote => true, :class => c %>
+    </div>
+</div>
+</div>

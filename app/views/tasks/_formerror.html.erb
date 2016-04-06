@@ -1,0 +1,7 @@
+<% if t.errors.any? %>
+    <% t.errors.full_messages.each do |msg| %>
+    <div class="alert alert-danger" role="alert">
+        <p><strong>Warning!</strong> <%= msg %></p>
+    </div>
+    <% end %>
+<% end %>

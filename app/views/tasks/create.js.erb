@@ -1,0 +1,8 @@
+var html = "<%= escape_javascript(render :partial => 'title', :locals => {:t => 'To-do list'}) %>";
+$("#tasks").html(html);
+var html = "<%= escape_javascript(render :partial => 'tasks', :locals => {:tasks => @tasks }) %>";
+$("#tasks").append(html);
+var flash = "<%= escape_javascript(render :partial => 'flash', :locals => {:f => :notice} ) %>";
+$("#flash").html(flash)
+$(".alert").delay(2000).fadeOut(500);
+$('#modal').modal('hide');

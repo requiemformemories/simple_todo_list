@@ -1,0 +1,6 @@
+
+
+
+var html = "<%= j(render :partial => 'formerror', :locals => {:t => @task}) %>";
+$('.formerror').html(html);
+$(".alert").delay(2000).fadeOut(500);

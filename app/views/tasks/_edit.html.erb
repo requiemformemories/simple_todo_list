@@ -1,13 +1,14 @@
-<div class="col-md-6 col-md-offset-3 panel form-panel">
+<div class=" panel form-panel">
     <div class="panel-body">
         <%t = 'Edit a task' %>
         <%= render :partial => 'title', :locals => {:t => t} %>
         
-        <%= form_for @task, :url => task_path(@task), :method => :patch do |f| %>
+        <%= form_for @task, :remote=>true, :method => :patch do |f| %>
+        <div class="formerror"></div>
         <%= render :partial => 'form', :locals => {:f => f} %>
         
         <%= f.submit 'Update', :class => 'btn btn-default create-btn' %>
-        
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <% end %>
     </div>
 </div>

@@ -1,30 +1,32 @@
 class TasksController < ApplicationController
   before_action :set_task, :only => [:show, :edit, :update, :destroy]
+  
   def index
     @categories = Category.all
+
     
     if params[:keyword]
-      @tasks = Task.where( [ "name like ?", "%#{params[:keyword]}%" ] ).page(params[:page]).per(5)
+      @tasks = Task.where( [ "name like ?", "%#{params[:keyword]}%" ] )
       @Page_title = "Search: " + params[:keyword] 
     else
       case params[:status] 
       when 'finished'
-        @tasks = Task.where(is_finished: TRUE).page(params[:page]).per(5)
+        @tasks = Task.where(is_finished: TRUE)
         @Page_title = "To-do List: Finished"
       when 'unfinish'
-        @tasks = Task.where(is_finished: FALSE).page(params[:page]).per(5)
+        @tasks = Task.where(is_finished: FALSE)
         @Page_title = "To-do List: Unfinish"
       when 'high-priority'
-        @tasks = Task.where(priority_id: 1).page(params[:page]).per(5)
+        @tasks = Task.where(priority_id: 1)
         @Page_title = "To-do List: High Priority"
       when 'normal-priority'  
-        @tasks = Task.where(priority_id: 2).page(params[:page]).per(5)
+        @tasks = Task.where(priority_id: 2)
         @Page_title = "To-do List: Normal Priority"
       when 'low-priority'
-        @tasks = Task.where(priority_id: 3).page(params[:page]).per(5)
+        @tasks = Task.where(priority_id: 3)
         @Page_title = "To-do List: Low Priority"
       else
-        @tasks = Task.page(params[:page]).per(5)
+        @tasks = Task.all
         @Page_title = "To-do List"
         @categories.each do |category|
           if params[:status] == category.name
@@ -33,54 +35,84 @@ class TasksController < ApplicationController
           end
         end
       end
-    end  
+    end
+    respond_to do |format|
+      format.html { }
+      format.js {  }
+    end
   end
   
+  
   def show
-    @Page_title = @task.name
+    respond_to do |format|
+      format.js {  }
+    end
   end
   
   
   def new
-    @task =  Task.new
+    @task = Task.new
+    respond_to do |format|
+      format.js {  }
+    end
   end
   
   def create
-    @task = Task.new(task_params)
+    @categories = Category.all
+    @tasks = Task.all
+    @task = Task.create(task_params)
     @task.is_finished = false
-    if @task.save
-      redirect_to tasks_url
-      flash[:notice] = "The task was sucessfully created!"
-    else
-      render :action => :new
+    respond_to do |format|
+      if @task.save
+        flash[:notice] = "The task was successfully created"
+        format.html { redirect_to tasks_url }
+        format.js
+      else
+        format.html {}
+        format.js{render :template => 'tasks/formerror.js.erb'}
+    end
     end
   end
   
   def edit
+    respond_to do |format|
+      format.js {  }
+    end
   end
 
   def update
-    if @task.update(task_params)
-      redirect_to task_url(@task)
-      flash[:notice] = "The task was successfully updated"
-    else
-      render :action => :edit
-    end
+    respond_to do |format|
+      if @task.update(task_params)
+        flash[:notice] = "The task was successfully updated"
+        format.html { redirect_to tasks_url }
+        format.js
+      else
+        format.html {}
+      end
+    end  
   end
   
   def finish
     @task = Task.find(params[:id])
     @task.update(:is_finished => true)
     @task.save
-    redirect_to tasks_url
-    flash[:notice] = "You finished a tasks!"
+    respond_to do |format|
+      flash[:notice] = "You finished a task!"
+      format.html { redirect_to tasks_url }
+      format.js { }
+    end
   end
   
   def destroy
-    @task.destroy
-    redirect_to tasks_url
-    flash[:alert] = "You deleted a task!"
+    @task = Task.find(params[:id])
+    @task.destroy  
+    respond_to do |format|
+      flash[:alert] = "You deleted a task!"
+      format.html { redirect_to tasks_url }
+      format.js { }
+    end
   end
+
     
   private
   

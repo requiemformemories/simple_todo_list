@@ -1,0 +1,4 @@
+$("div#<%= @task.id %>").slideUp();
+var flash = "<%= escape_javascript(render :partial => 'flash', :locals => {:f => :alert}  ) %>";
+$("#flash").html(flash)
+$(".alert").delay(2000).fadeOut(500);

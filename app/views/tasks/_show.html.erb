@@ -1,12 +1,12 @@
  <% if @task.is_finished == TRUE %>
-    <div class="col-md-6 col-md-offset-3 panel finish-panel">
+    <div class=" panel finish-panel">
 <% else %>
-    <div class="col-md-6 col-md-offset-3 panel panel">
+    <div class="panel">
 <% end %>
     
     
     <div class="panel-body">
-        <% t = @Page_title %>
+        <% t = @task.name %>
         <%= render :partial => 'title', :locals => {:t => t} %>
         <p><%= @task.description %></p>
     </div>
@@ -30,9 +30,10 @@
         </table>
             <div class="panel-body">
          <% if @task.is_finished == TRUE %>
-            <%= link_to 'Back to List', tasks_path, :class => "btn btn-default finish-task-btn" %>
+            <button type="button" class="btn btn-default finish-task-btn" data-dismiss="modal">Close</button>
         <% else %>
-            <%= link_to 'Back to List', tasks_path, :class => "btn btn-default task-btn" %>
+            <button type="button" class="btn btn-default task-btn" data-dismiss="modal">Close</button>
+
         <% end %>
     </div>
 </div>
