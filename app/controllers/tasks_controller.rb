@@ -30,7 +30,7 @@ class TasksController < ApplicationController
         @Page_title = "To-do List"
         @categories.each do |category|
           if params[:status] == category.name
-            @tasks = Task.where(category_id: category.id).page(params[:page]).per(5)
+            @tasks = Task.where(category_id: category.id)
             @Page_title = "To-do List: " + category.name
           end
         end
