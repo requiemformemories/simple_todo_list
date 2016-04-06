@@ -70,7 +70,7 @@ class TasksController < ApplicationController
       else
         format.html {}
         format.js{render :template => 'tasks/formerror.js.erb'}
-    end
+      end
     end
   end
   
