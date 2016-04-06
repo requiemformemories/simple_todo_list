@@ -6,6 +6,17 @@ This is a very simple to-do list for practicing.
 ```
 $ bundle install
 ```
+
+- Database migrations
+```
+$ rake db:migrate
+```
+
+- Load seeds
+```
+$ rake db:seed
+```
+
 - Start the application
 ```
 bin/rails server
