@@ -2,11 +2,11 @@
 This is a very simple to-do list for practicing.
 
 ## How to use
-1. Install gems
+- Install gems
 ```
 $ bundle install
 ```
-2. Start the application
+- Start the application
 ```
 bin/rails server
 ```
