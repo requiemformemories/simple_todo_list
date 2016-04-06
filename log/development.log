@@ -1,0 +1,436 @@
+
+
+Started GET "/" for 210.61.216.120 at 2016-04-06 07:32:27 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.5) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.5) lib/active_record/migration.rb:373:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (16.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (133.2ms)
+  [1m[36m (19.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (13.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateTasks (20160324061048)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "catergory_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_tasks_on_catergory_id" ON "tasks" ("catergory_id")[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160324061048"]]
+  [1m[36m (16.1ms)[0m  [1mcommit transaction[0m
+Migrating to Init (20160324061835)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160324061835"]]
+  [1m[35m (10.6ms)[0m  commit transaction
+Migrating to CreateCategories (20160324070102)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160324070102"]]
+  [1m[35m (22.7ms)[0m  commit transaction
+Migrating to CreatePriorities (20160324070148)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "priorities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160324070148"]]
+  [1m[35m (14.3ms)[0m  commit transaction
+Migrating to CreateTaskPriorityships (20160324070236)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "task_priorityships" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_id" integer, "priority_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (4.3ms)[0m  [1mDROP TABLE "task_priorityships"[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160324070236"]]
+  [1m[36m (19.2ms)[0m  [1mcommit transaction[0m
+Migrating to RenameCatergoryToCategory (20160324071700)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mCREATE TEMPORARY TABLE "atasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "category_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_on_catergory_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_on_catergory_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "tindex_atasks_on_catergory_id" ON "atasks" ("category_id")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "tasks"
+  [1m[36m (0.4ms)[0m  [1mDROP TABLE "tasks"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "category_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_atasks_on_catergory_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_atasks_on_catergory_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  CREATE  INDEX "index_tasks_on_catergory_id" ON "tasks" ("category_id")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "atasks"[0m
+  [1m[35m (0.4ms)[0m  DROP TABLE "atasks"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_on_catergory_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_on_catergory_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_on_catergory_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_on_catergory_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_on_catergory_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_on_catergory_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_tasks_on_category_id" ON "tasks" ("category_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_on_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_on_category_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_on_catergory_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_on_catergory_id' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1mDROP INDEX "index_tasks_on_catergory_id"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160324071700"]]
+  [1m[36m (13.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddIsFinishedToTasks (20160324072556)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "tasks" ADD "is_finished" boolean[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160324072556"]]
+  [1m[36m (14.1ms)[0m  [1mcommit transaction[0m
+Migrating to AddPriorityIdToTasks (20160324073200)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "tasks" ADD "priority_id" text[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160324073200"]]
+  [1m[36m (11.9ms)[0m  [1mcommit transaction[0m
+Migrating to ChangePriorityId (20160324073358)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TEMPORARY TABLE "atasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "category_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "is_finished" boolean, "priority_id" text) [0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_on_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_on_category_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "tindex_atasks_on_category_id" ON "atasks" ("category_id")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "tasks"
+  [1m[36m (0.7ms)[0m  [1mDROP TABLE "tasks"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "category_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "is_finished" boolean, "priority_id" integer) 
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_atasks_on_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_atasks_on_category_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_tasks_on_category_id" ON "tasks" ("category_id")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "atasks"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "atasks"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_on_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_on_category_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_tasks_on_priority_id" ON "tasks" ("priority_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160324073358"]]
+  [1m[35m (14.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_on_priority_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_on_priority_id' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_on_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_on_category_id' AND type='index'
+[0m
+
+
+Started GET "/" for 210.61.216.120 at 2016-04-06 07:33:26 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TasksController#index as HTML
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered tasks/_title.html.erb (0.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tasks"[0m
+  Rendered tasks/_tasks.html.erb (5.5ms)
+  Rendered tasks/index.html.erb within layouts/application (29.9ms)
+Completed 200 OK in 6759ms (Views: 6707.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/categories.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-fb76abdafe4862de4071d004c64ce4fc4ffe32c9e3b38115e4450245f31f51dd.css?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:34 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:35 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:35 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:35 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:35 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:35 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/categories.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:35 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 210.61.216.120 at 2016-04-06 07:33:35 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/header-213b828df6bf7df1f589a7723044ded317d3ca8e9ea4da9a31e6d4854bfc2110.jpg" for 210.61.216.120 at 2016-04-06 07:33:35 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/tasks?status=high-priority" for 210.61.216.120 at 2016-04-06 07:33:51 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as JS
+  Parameters: {"status"=>"high-priority"}
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered tasks/_title.html.erb (0.8ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."priority_id" = ?[0m  [["priority_id", 1]]
+  Rendered tasks/_tasks.html.erb (13.7ms)
+  Rendered tasks/index.html.erb (29.4ms)
+  Rendered tasks/index.js.erb (33.8ms)
+Completed 200 OK in 82ms (Views: 64.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tasks" for 210.61.216.120 at 2016-04-06 07:33:53 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as JS
+  [1m[35mCategory Load (0.6ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered tasks/_title.html.erb (0.1ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tasks"[0m
+  Rendered tasks/_tasks.html.erb (2.7ms)
+  Rendered tasks/index.html.erb (20.6ms)
+  Rendered tasks/index.js.erb (26.3ms)
+Completed 200 OK in 53ms (Views: 45.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/tasks?status=high-priority" for 210.61.216.120 at 2016-04-06 07:33:56 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as JS
+  Parameters: {"status"=>"high-priority"}
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered tasks/_title.html.erb (0.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."priority_id" = ?[0m  [["priority_id", 1]]
+  Rendered tasks/_tasks.html.erb (1.1ms)
+  Rendered tasks/index.html.erb (11.5ms)
+  Rendered tasks/index.js.erb (14.1ms)
+Completed 200 OK in 137ms (Views: 134.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tasks" for 210.61.216.120 at 2016-04-06 07:33:57 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#index as JS
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered tasks/_title.html.erb (0.1ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tasks"[0m
+  Rendered tasks/_tasks.html.erb (134.4ms)
+  Rendered tasks/index.html.erb (142.7ms)
+  Rendered tasks/index.js.erb (145.2ms)
+Completed 200 OK in 157ms (Views: 155.1ms | ActiveRecord: 0.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "priorities" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "high"], ["created_at", "2016-04-06 07:43:49.159875"], ["updated_at", "2016-04-06 07:43:49.159875"]]
+  [1m[35m (12.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "priorities" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "normal"], ["created_at", "2016-04-06 07:43:49.184983"], ["updated_at", "2016-04-06 07:43:49.184983"]]
+  [1m[36m (11.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "priorities" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "low"], ["created_at", "2016-04-06 07:43:49.199123"], ["updated_at", "2016-04-06 07:43:49.199123"]]
+  [1m[35m (12.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "social"], ["created_at", "2016-04-06 07:43:49.221537"], ["updated_at", "2016-04-06 07:43:49.221537"]]
+  [1m[36m (10.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "schoolwork"], ["created_at", "2016-04-06 07:43:49.234424"], ["updated_at", "2016-04-06 07:43:49.234424"]]
+  [1m[35m (11.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "family"], ["created_at", "2016-04-06 07:43:49.248268"], ["updated_at", "2016-04-06 07:43:49.248268"]]
+  [1m[36m (10.4ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/" for 210.61.216.120 at 2016-04-06 07:44:10 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TasksController#index as HTML
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered tasks/_title.html.erb (0.4ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tasks"[0m
+  Rendered tasks/_tasks.html.erb (2.9ms)
+  Rendered tasks/index.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 511ms (Views: 459.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/tasks/new" for 210.61.216.120 at 2016-04-06 07:44:13 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#new as JS
+  Rendered tasks/_title.html.erb (0.4ms)
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories"
+  [1m[36mPriority Load (0.2ms)[0m  [1mSELECT "priorities".* FROM "priorities"[0m
+  Rendered tasks/_form.html.erb (45.2ms)
+  Rendered tasks/_new.html.erb (52.7ms)
+  Rendered tasks/new.js.erb (56.5ms)
+Completed 200 OK in 76ms (Views: 67.1ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/tasks" for 210.61.216.120 at 2016-04-06 07:44:15 +0000
+Cannot render console from 210.61.216.120! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "task"=>{"name"=>"aaa", "description"=>"", "category_id"=>"1", "priority_id"=>"1"}, "commit"=>"Create"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "tasks" ("name", "description", "priority_id", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "aaa"], ["description", ""], ["priority_id", 1], ["category_id", 1], ["created_at", "2016-04-06 07:44:15.642443"], ["updated_at", "2016-04-06 07:44:15.642443"]]
+  [1m[35m (16.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "tasks" SET "is_finished" = ?, "updated_at" = ? WHERE "tasks"."id" = ?  [["is_finished", "f"], ["updated_at", "2016-04-06 07:44:15.666694"], ["id", 1]]
+  [1m[36m (10.5ms)[0m  [1mcommit transaction[0m
+  Rendered tasks/_title.html.erb (0.1ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tasks"
+  [1m[36mTask Load (0.5ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  [1m[35mPriority Load (0.3ms)[0m  SELECT  "priorities".* FROM "priorities" WHERE "priorities"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered tasks/_task.html.erb (32.9ms)
+  Rendered tasks/_tasks.html.erb (39.6ms)
+  Rendered tasks/_flash.html.erb (0.5ms)
+  Rendered tasks/create.js.erb (50.3ms)
+Completed 200 OK in 114ms (Views: 62.7ms | ActiveRecord: 29.2ms)
