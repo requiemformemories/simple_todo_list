@@ -1,5 +1,8 @@
-# A very simple To-Do List
-This is a very simple to-do list for practicing.
+# Simple To-Do List
+This is a very simple to-do list.
+**Warning! This project is deprecated and not under maintenance anymore.**
+
+![Preview](https://i.imgur.com/PnmMlNJ.jpg)
 
 ## How to use
 - Install gems
