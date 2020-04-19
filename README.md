@@ -1,5 +1,7 @@
 # Simple To-Do List
+
 This is a very simple to-do list.
+
 **Warning! This project is deprecated and not under maintenance anymore.**
 
 ![Preview](https://i.imgur.com/PnmMlNJ.jpg)
